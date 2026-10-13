@@ -1,0 +1,10 @@
+DVOZON/
+  server.js               Express backend, authentication, SQLite, AI API
+  package.json            Node.js dependencies and start command
+  .env.example            Environment variable template
+  public/
+    index.html            Responsive login and AI workspace interface
+    styles.css            Premium mobile-first styling
+    app.js                Frontend interactions and API calls
+  README.md               Roman Urdu-friendly setup and deployment guide
+  .gitignore

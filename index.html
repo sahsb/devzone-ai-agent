@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d14">
+  <meta name="description" content="DVOZON — your mobile-friendly AI coding workspace.">
+  <title>DVOZON — AI Coding Agent</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main id="app" class="app-shell">
+    <section id="authView" class="auth-layout">
+      <div class="brand-panel">
+        <div class="brand-mark">D<span>V</span></div>
+        <p class="eyebrow">YOUR AI DEVELOPMENT PARTNER</p>
+        <h1>Build ideas.<br><span>Ship smarter.</span></h1>
+        <p class="muted hero-copy">A focused coding workspace for planning, writing, debugging, and learning code — right from your phone.</p>
+        <div class="feature-pills"><span>⌘ Code assistant</span><span>✦ Project thinking</span><span>↗ Mobile ready</span></div>
+        <div class="decor-code"><span>01</span> const future = await buildIdea();<br><span>02</span> <b>return</b> future;</div>
+      </div>
+      <div class="auth-card">
+        <div class="mobile-brand"><div class="brand-mark small">D<span>V</span></div><b>DVOZON</b></div>
+        <div class="auth-tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="signupTab">Create account</button></div>
+        <div id="authHeading"><h2>Welcome back</h2><p class="muted">Sign in to continue to your workspace.</p></div>
+        <form id="authForm">
+          <label id="nameLabel" class="hidden" for="name">Full name</label>
+          <input id="name" class="hidden" autocomplete="name" placeholder="Your name" maxlength="70">
+          <label for="email">Email address</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="190">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" required minlength="8" maxlength="200">
+          <button class="primary full" id="authSubmit" type="submit">Sign in <span>→</span></button>
+          <p id="authMessage" class="form-message" role="status"></p>
+        </form>
+        <p class="fine-print">By continuing, you agree to use DVOZON responsibly. Keep your account and API keys private.</p>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace hidden">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand"><div class="brand-mark small">D<span>V</span></div><b>DVOZON</b><button id="closeSidebar" class="icon-button mobile-only" aria-label="Close menu">×</button></div>
+        <button id="newChat" class="new-chat">＋ <span>New session</span></button>
+        <p class="side-label">YOUR WORKSPACE</p>
+        <nav class="side-nav"><button class="nav-item selected" data-mode="build">⌘ <span>Build with AI</span></button><button class="nav-item" data-mode="debug">⌁ <span>Debug code</span></button><button class="nav-item" data-mode="learn">✧ <span>Learn coding</span></button></nav>
+        <div class="history-head"><span class="side-label">RECENT SESSIONS</span><button id="refreshHistory" class="icon-button" aria-label="Refresh sessions">↻</button></div>
+        <div id="historyList" class="history-list"><p class="history-empty">Your sessions will appear here.</p></div>
+        <div class="sidebar-bottom"><div class="status-dot"></div><span>Workspace ready</span><button id="logout" class="logout">Log out ↗</button></div>
+      </aside>
+      <div id="sidebarShade" class="sidebar-shade"></div>
+      <section class="main-panel">
+        <header class="topbar"><button id="openSidebar" class="icon-button mobile-only" aria-label="Open menu">☰</button><div class="breadcrumb">Workspace <span>/</span> <b id="modeName">Build with AI</b></div><div class="top-user"><div class="online-dot"></div><span id="userName">Developer</span><div id="avatar" class="avatar">D</div></div></header>
+        <div class="content-scroll" id="contentScroll">
+          <div id="welcomePanel" class="welcome-panel">
+            <div class="welcome-tag"><span class="sparkle">✦</span> DVOZON AI WORKSPACE</div>
+            <h1>What are we<br><span>building today?</span></h1>
+            <p class="muted welcome-copy">Describe your idea, paste an error, or ask how something works. Start small — build something great.</p>
+            <div class="prompt-grid">
+              <button class="prompt-card" data-prompt="Build a responsive HTML, CSS and JavaScript landing page. Explain the files and setup steps."><span class="prompt-icon purple">⌘</span><b>Build a website</b><small>Create a clean responsive starter</small><span class="card-arrow">↗</span></button>
+              <button class="prompt-card" data-prompt="Help me debug this code. First ask me to paste the code and exact error, then explain the fix."><span class="prompt-icon blue">⌁</span><b>Fix a bug</b><small>Understand errors and solve them</small><span class="card-arrow">↗</span></button>
+              <button class="prompt-card" data-prompt="Teach me JavaScript from beginner level using small practical examples suitable for an Android phone."><span class="prompt-icon gold">✧</span><b>Learn to code</b><small>Step-by-step practical guidance</small><span class="card-arrow">↗</span></button>
+              <button class="prompt-card" data-prompt="Plan an Android-friendly web app with frontend, backend, authentication, database, security and deployment steps."><span class="prompt-icon green">⌘</span><b>Plan a project</b><small>Turn an idea into clear steps</small><span class="card-arrow">↗</span></button>
+            </div>
+          </div>
+          <div id="conversation" class="conversation hidden" aria-live="polite"></div>
+        </div>
+        <div class="composer-wrap">
+          <div class="composer" id="composer">
+            <textarea id="promptInput" rows="1" maxlength="12000" placeholder="Ask DVOZON to build, explain, or debug code…"></textarea>
+            <div class="composer-footer"><div class="composer-hint"><span class="sparkle">✦</span> AI can make mistakes. Review code before using it.</div><button id="sendBtn" class="send-button" aria-label="Send message">↑</button></div>
+          </div>
+          <p class="composer-note">DVOZON never executes generated code on this server.</p>
+        </div>
+      </section>
+    </section>
+    <div id="toast" class="toast" role="status"></div>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
